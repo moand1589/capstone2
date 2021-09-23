@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b5ddf8349a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/main/css/login.css">
+    <title>login</title>
+</head>
+<body>
+    <div class=wrap>
+            <div style=height:20px;></div>
+            <div class=content01> 
+                <div class=back>
+                    <br>
+                    <div class="img"><img src="{%static 'main/logo.png' %}" width="80px" height="80px"></div>
+       
+                    <div class=sign ><b>Sign in</b></div>      
+                          {% if messages %}
+                    <div>
+                        {% for message in messages %}
+                            {{ message.message }}!
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <br>
+             
+                    <form class="register-form" style="margin-left:15pt;" method="POST" action="{% url 'accounts:login' %}">
+                        {% csrf_token %}
+                        <input class="un" name="username" type="text" placeholder="username">
+                        <br>
+                        <input class="pass" name="password" type="password" placeholder="password">
+                        <br>
+                        <br>
+                        <input type="submit"class="submit-btn" value="Sign in">
+                    </form>                      
+                    <form method="GET" style="margin-left:15pt;margin-top:5px;"class="register-form" action="{% url 'accounts:signup' %}">                                
+                        <input type="submit"class="submit-btn" value="Sign up">
+                    </form>
+                
+                    
+                </div>
+    </div>
+
+</body>
+</html>

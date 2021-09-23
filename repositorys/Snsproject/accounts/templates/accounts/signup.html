@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b5ddf8349a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/main/css/login.css">
+    <title>signup</title>
+</head>
+<body>
+    <div class="wrap">
+        <div style=height:20px;></div>
+        <div class="content01">
+            <div class=back>
+                <br>
+                <div class="img"><img src="{%static 'main/logo.png' %}" width="80px" height="80px"> </div>
+           
+                <div class=sign><b>Sign up</b></div>
+            <form method="POST" action="{% url 'accounts:signup' %}">
+                {% csrf_token %}
+                <br>
+                <div>
+                <input class="un" name="username" type="text" style="margin-left: 10px;" placeholder="instagram ID">
+                </div>
+                <div>
+                <input class="un" name="password1" type="password" style="margin-left: 10px;" placeholder="passoword">
+                </div>
+                <div>
+                <input class="un" name="password2" type="password" style="margin-left: 10px;" placeholder="check passowrd">
+                </div>
+                <input type="submit" class="submit-btn" style="margin-left: 65px;"value="Sign up">
+            </form>
+            <!--<a href="{% url 'accounts:login' %}">로그인 페이지로 이동</a>-->
+        {% if messages %}
+    <div>
+        {% for message in messages %}
+            {{ message.message }}!
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+</div>
+    </div>
+    </div>
+
+</body>
+</html>
